@@ -153,7 +153,10 @@ static void QPRestore(void) {
 
 static void QPReload(void) {
     CFPreferencesAppSynchronize(QPDomain);
-    BOOL enabled = [QPRead(QPDomain, CFSTR("Enabled")) boolValue];
+    id enabledValue = QPRead(QPDomain, CFSTR("Enabled"));
+    // A fresh install (or an upgrade without saved preferences) should mute
+    // immediately. An explicit user choice to disable must still be respected.
+    BOOL enabled = enabledValue ? [enabledValue boolValue] : YES;
     QPEnabled.store(enabled);
     if (enabled) QPEnforce();
     else QPRestore();

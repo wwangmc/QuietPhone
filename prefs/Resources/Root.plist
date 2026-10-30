@@ -4,14 +4,14 @@
     <dict>
         <key>cell</key><string>PSGroupCell</string>
         <key>label</key><string>QuietPhone 软件静音</string>
-        <key>footerText</key><string>开启后保持铃声静音，并将视频、音乐、游戏使用的媒体音量保持为零。安装后默认关闭，开关即时生效。</string>
+        <key>footerText</key><string>安装后默认开启：保持铃声静音，并将视频、音乐、游戏使用的媒体音量保持为零。需要恢复声音时关闭下方开关，切换即时生效。</string>
     </dict>
     <dict>
         <key>cell</key><string>PSSwitchCell</string>
         <key>label</key><string>铃声和媒体静音</string>
         <key>defaults</key><string>com.example.quietphone</string>
         <key>key</key><string>Enabled</string>
-        <key>default</key><false/>
+        <key>default</key><true/>
         <key>get</key><string>readPreferenceValue:</string>
         <key>set</key><string>setPreferenceValue:specifier:</string>
     </dict>
