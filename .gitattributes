@@ -1,5 +1,6 @@
 * text=auto
 Makefile text eol=lf
+*.mk text eol=lf
 control text eol=lf
 *.xm text diff merge eol=lf
 *.plist text eol=lf

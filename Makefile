@@ -1,15 +1,6 @@
-# Dopamine rootless only.
-TYPE ?= 1
+include Config.mk
 DEBUG = 0
 FINALPACKAGE = 1
-
-ifeq ($(TYPE),1)
-ARCHS ?= arm64 arm64e
-TARGET = iphone:clang:16.5:15.0
-THEOS_PACKAGE_SCHEME = rootless
-else
-$(error QuietPhone supports TYPE=1 for Dopamine rootless)
-endif
 
 INSTALL_TARGET_PROCESSES = SpringBoard
 
@@ -25,3 +16,9 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 SUBPROJECTS += prefs
 include $(THEOS_MAKE_PATH)/aggregate.mk
+
+# Theos generates staged control before this hook. Keep each package's
+# firmware dependency aligned with its own deployment target.
+before-package::
+	$(ECHO_NOTHING)sed -e 's/firmware (>= 14.0)/firmware (>= $(QP_MIN_IOS))/g' "$(THEOS_STAGING_DIR)/DEBIAN/control" > "$(THEOS_STAGING_DIR)/DEBIAN/control.quietphone"$(ECHO_END)
+	$(ECHO_NOTHING)mv "$(THEOS_STAGING_DIR)/DEBIAN/control.quietphone" "$(THEOS_STAGING_DIR)/DEBIAN/control"$(ECHO_END)

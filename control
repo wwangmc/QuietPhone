@@ -1,9 +1,9 @@
 Package: com.example.quietphone
 Name: QuietPhone
-Version: 0.1.1
+Version: 0.1.2
 Architecture: iphoneos-arm
-Description: Software ringer and media silence for Dopamine
+Description: Software ringer and media silence for jailbroken iOS
 Maintainer: Developer
 Author: Developer
 Section: Tweaks
-Depends: firmware (>= 15.0), mobilesubstrate, preferenceloader
+Depends: firmware (>= 14.0), mobilesubstrate, preferenceloader
