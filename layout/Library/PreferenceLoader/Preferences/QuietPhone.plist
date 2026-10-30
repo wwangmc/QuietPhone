@@ -4,5 +4,7 @@
     <key>bundle</key><string>QuietPhonePrefs</string>
     <key>cell</key><string>PSLinkCell</string>
     <key>detail</key><string>QPRootListController</string>
+    <key>isController</key><true/>
+    <key>id</key><string>QuietPhone</string>
     <key>label</key><string>QuietPhone 软件静音</string>
 </dict></dict></plist>
