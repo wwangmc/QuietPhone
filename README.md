@@ -43,11 +43,15 @@ gmake TYPE=1 FINALPACKAGE=1 package
 
 0.1.0 已完成 [Actions 编译](https://github.com/wwangmc/QuietPhone/actions/runs/40992688050)，源码提交为 `c4b9caea48712358634a66d950b13591b6af99fa`。安装包为 `com.example.quietphone_0.1.0_iphoneos-arm64.deb`，SHA256 为 `66122b12ce8ea8088d84c7905fd56063d1374bc8210aba4b469c9f4d49a98ef6`。发布使用同一份经过校验和真机测试的安装包；后续许可证和说明更新没有改变插件代码。
 
+0.1.1 已通过 [Actions 编译](https://github.com/wwangmc/QuietPhone/actions/runs/40995663430)，源码提交为 `32cd61d285d07d3f985c96fea0f9ee229fc33f9f`。安装包为 `com.example.quietphone_0.1.1_iphoneos-arm64.deb`，SHA256 为 `82366fa07071a78334709bc655e633e25ec3c5b600c02bf36335daa08a18db6e`。
+
 ## 验证范围
 
 本地通过 plist、YAML、元数据和打包路径检查；Actions 通过 Logos 预处理、arm64 / arm64e 编译链接及 Rootless deb 打包。安装包校验后经 MKS 安装到 iPhone X / iOS 16.1.1，dpkg 安装成功，SpringBoard 重载后启用插件。
 
 2026-10-30：启动 `com.korea.mrtgd2.ios` 并确认游戏在前台；用户现场反馈“没有声音了”。这验证了该设备和该游戏当时的静音效果。其他游戏、视频、蓝牙、AirPlay、音量恢复、长时间运行和其他 iOS 版本尚未实测。
+
+同日，在另一台原先报告无效的 iPhone X / iOS 16.1.1 上升级 0.1.1：没有预先写入启用配置，重载后自动保存原始扬声器音量和铃声状态，设置面板正常显示且默认开关为开启。用户确认“好了它生效了 我看到了”。其他机型和系统仍需验证，手动关闭及音量恢复流程尚未完成真机确认。
 
 这台设备的插件偏好实际位于 `/var/jb/var/mobile/Library/Preferences/`，手动配置时需按设备实际路径核对；日常使用优先通过设置面板切换。
 
