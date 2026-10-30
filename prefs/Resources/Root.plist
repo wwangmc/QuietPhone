@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><array>
+    <dict>
+        <key>cell</key><string>PSGroupCell</string>
+        <key>label</key><string>QuietPhone 软件静音</string>
+        <key>footerText</key><string>开启后保持铃声静音，并将视频、音乐、游戏使用的媒体音量保持为零。安装后默认关闭，开关即时生效。</string>
+    </dict>
+    <dict>
+        <key>cell</key><string>PSSwitchCell</string>
+        <key>label</key><string>铃声和媒体静音</string>
+        <key>defaults</key><string>com.example.quietphone</string>
+        <key>key</key><string>Enabled</string>
+        <key>default</key><false/>
+        <key>get</key><string>readPreferenceValue:</string>
+        <key>set</key><string>setPreferenceValue:specifier:</string>
+    </dict>
+    <dict>
+        <key>cell</key><string>PSGroupCell</string>
+        <key>footerText</key><string>关闭时恢复开启前的铃声状态，以及当前输出设备此前保存的媒体音量。建议先关闭开关，再卸载插件。蓝牙和 AirPlay 需单独实测；其他应用调高音量后会自动拉回，不能保证切换过程绝无短暂出声。本功能不保证屏蔽闹钟、通话或系统紧急提醒。</string>
+    </dict>
+</array></plist>
