@@ -53,6 +53,13 @@ gmake TYPE=1 FINALPACKAGE=1 package
 
 0.1.1 已通过 [Actions 编译](https://github.com/wwangmc/QuietPhone/actions/runs/40995663430)，源码提交为 `32cd61d285d07d3f985c96fea0f9ee229fc33f9f`。安装包为 `com.example.quietphone_0.1.1_iphoneos-arm64.deb`，SHA256 为 `82366fa07071a78334709bc655e633e25ec3c5b600c02bf36335daa08a18db6e`。
 
+0.1.2 的有根和无根包均通过 [Actions 编译](https://github.com/wwangmc/QuietPhone/actions/runs/41012425336)，源码提交为 `bf853503a4b65eb77e30d974f4c0cd9a91b0c53f`。两种包的安装路径、固件依赖、设置资源和二进制 arm64 / arm64e 切片及最低部署版本均已检查；尚未在有根真机上验证。
+
+| 安装包 | SHA256 |
+| --- | --- |
+| `com.example.quietphone_0.1.2_iphoneos-arm.deb`（有根） | `2a7223a77096b8b152eacbd938727869194f21dc9a8e38af732ebef76da252bc` |
+| `com.example.quietphone_0.1.2_iphoneos-arm64.deb`（无根） | `7b6a51ccbe2a3dadc47f5fa27e42c5af511fef1e303d02ba16ac8bc59ea2b0c2` |
+
 ## 验证范围
 
 本地通过 plist、YAML、元数据和打包路径检查；Actions 通过 Logos 预处理、arm64 / arm64e 编译链接及 Rootless deb 打包。安装包校验后经 MKS 安装到 iPhone X / iOS 16.1.1，dpkg 安装成功，SpringBoard 重载后启用插件。
