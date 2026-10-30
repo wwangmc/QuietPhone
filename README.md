@@ -6,7 +6,7 @@
 
 ## 使用
 
-1. 编译取得 Rootless `.deb`，用 Sileo 安装；依赖 PreferenceLoader 和越狱注入框架。
+1. 在 Sileo 添加软件源 `https://wwangmc.github.io/repo/rootless/`，搜索 **QuietPhone** 安装；也可从 [Releases](https://github.com/wwangmc/QuietPhone/releases) 下载 Rootless `.deb`。依赖 PreferenceLoader 和越狱注入框架。
 2. 安装后重启 SpringBoard，在“设置 → QuietPhone 软件静音”开启“铃声和媒体静音”。默认关闭，之后切换即时生效。
 3. 关闭时恢复之前保存的铃声状态；媒体音量仅在能够识别当前输出设备并有对应快照时恢复，否则保持当前音量，由用户手动调整。
 4. 卸载前先关闭开关并确认音量恢复。插件不运行时不能执行恢复操作；安全模式、卸载或退出越狱后不能继续保持静音。
@@ -38,7 +38,7 @@ gmake TYPE=1 FINALPACKAGE=1 package
 
 也提供 `.github/workflows/build.yml`：项目位于 GitHub 仓库根目录时，推送 main/master、提交 PR 或手动运行 **Actions → Build Theos packages** 可以构建。在成功运行的 **Artifacts → QuietPhone-rootless** 中下载 `.deb`；失败日志为 `build-log-rootless`。
 
-0.1.0 已在私有仓库完成 [Actions 编译](https://github.com/wwangmc/QuietPhone/actions/runs/40992688050)，源码提交为 `c4b9caea48712358634a66d950b13591b6af99fa`。安装包为 `com.example.quietphone_0.1.0_iphoneos-arm64.deb`，SHA256 为 `66122b12ce8ea8088d84c7905fd56063d1374bc8210aba4b469c9f4d49a98ef6`。
+0.1.0 已完成 [Actions 编译](https://github.com/wwangmc/QuietPhone/actions/runs/40992688050)，源码提交为 `c4b9caea48712358634a66d950b13591b6af99fa`。安装包为 `com.example.quietphone_0.1.0_iphoneos-arm64.deb`，SHA256 为 `66122b12ce8ea8088d84c7905fd56063d1374bc8210aba4b469c9f4d49a98ef6`。发布使用同一份经过校验和真机测试的安装包；后续许可证和说明更新没有改变插件代码。
 
 ## 验证范围
 
@@ -49,3 +49,7 @@ gmake TYPE=1 FINALPACKAGE=1 package
 这台设备的插件偏好实际位于 `/var/jb/var/mobile/Library/Preferences/`，手动配置时需按设备实际路径核对；日常使用优先通过设置面板切换。
 
 真机验收应覆盖：启用后播放视频/游戏、按键和控制中心调音量、坏键抖动、锁屏解锁、respring、蓝牙连接/断开、关闭后恢复音量、再次启用与卸载。先在一台设备上验证后再用于其他手机。
+
+## 开源
+
+源码仓库：[wwangmc/QuietPhone](https://github.com/wwangmc/QuietPhone)。本项目采用 [MIT 许可证](LICENSE)，允许使用、修改及再分发，须保留许可证和版权声明。
