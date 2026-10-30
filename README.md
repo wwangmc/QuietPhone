@@ -2,7 +2,7 @@
 
 为实体静音键损坏的 iPhone 提供软件静音：同时保持铃声静音和媒体音量为零，覆盖使用普通媒体输出的视频、音乐和游戏。
 
-目标为 Dopamine Rootless 环境、iOS 15/16，编译下限 iOS 15.0，架构 arm64 / arm64e。这是适配目标，尚无真机兼容性结论，也不代表支持所有 iOS 15 以上版本或机型。
+目标为 Dopamine Rootless 环境、iOS 15/16，编译下限 iOS 15.0，架构 arm64 / arm64e。已在 iPhone X / iOS 16.1.1 上完成安装及指定游戏静音验证；其他机型和系统仍需实测，不代表支持所有 iOS 15 以上版本。
 
 ## 使用
 
@@ -36,10 +36,16 @@ gmake TYPE=1 FINALPACKAGE=1 package
 
 只支持 `TYPE=1` Rootless；Rootful 和 RootHide 不在本项目的构建范围内。
 
-也提供 `.github/workflows/build.yml`：项目位于 GitHub 仓库根目录时，推送 main/master、提交 PR 或手动运行 **Actions → Build Theos packages** 可以构建。在成功运行的 **Artifacts → QuietPhone-rootless** 中下载 `.deb`；失败日志为 `build-log-rootless`。此项目尚未被上传，也没有触发云端构建。
+也提供 `.github/workflows/build.yml`：项目位于 GitHub 仓库根目录时，推送 main/master、提交 PR 或手动运行 **Actions → Build Theos packages** 可以构建。在成功运行的 **Artifacts → QuietPhone-rootless** 中下载 `.deb`；失败日志为 `build-log-rootless`。
+
+0.1.0 已在私有仓库完成 [Actions 编译](https://github.com/wwangmc/QuietPhone/actions/runs/40992688050)，源码提交为 `c4b9caea48712358634a66d950b13591b6af99fa`。安装包为 `com.example.quietphone_0.1.0_iphoneos-arm64.deb`，SHA256 为 `66122b12ce8ea8088d84c7905fd56063d1374bc8210aba4b469c9f4d49a98ef6`。
 
 ## 验证范围
 
-本地检查包括 plist、YAML、元数据和打包路径一致性。Windows 当前没有可用的 iOS 编译工具链；尚未通过 iOS 编译、安装或真机音频验证，源码 ZIP 不是可安装的 deb。
+本地通过 plist、YAML、元数据和打包路径检查；Actions 通过 Logos 预处理、arm64 / arm64e 编译链接及 Rootless deb 打包。安装包校验后经 MKS 安装到 iPhone X / iOS 16.1.1，dpkg 安装成功，SpringBoard 重载后启用插件。
+
+2026-10-30：启动 `com.korea.mrtgd2.ios` 并确认游戏在前台；用户现场反馈“没有声音了”。这验证了该设备和该游戏当时的静音效果。其他游戏、视频、蓝牙、AirPlay、音量恢复、长时间运行和其他 iOS 版本尚未实测。
+
+这台设备的插件偏好实际位于 `/var/jb/var/mobile/Library/Preferences/`，手动配置时需按设备实际路径核对；日常使用优先通过设置面板切换。
 
 真机验收应覆盖：启用后播放视频/游戏、按键和控制中心调音量、坏键抖动、锁屏解锁、respring、蓝牙连接/断开、关闭后恢复音量、再次启用与卸载。先在一台设备上验证后再用于其他手机。
